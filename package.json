@@ -5,6 +5,7 @@
   "author": "Andy Slezak <andy.slezak@gmail.com>",
   "dependencies": {
     "basscss": "^8.0.4",
+    "bootstrap": "^4.0.0-beta.3",
     "emotion": "^9.0.2",
     "emotion-server": "^9.0.2",
     "emotion-theming": "^9.0.0",
@@ -25,19 +26,24 @@
     "object-fit-images": "^3.2.3",
     "react-emotion": "^9.0.2",
     "react-helmet": "^5.2.0",
+    "react-popper": "^0.8.2",
+    "react-transition-group": "^2.2.1",
     "react-x-ray": "^1.0.0-4",
-    "reactstrap": "^5.0.0-beta",
+    "reactstrap": "^5.0.0-beta.2",
     "rebass": "^2.0.0-0",
+    "semantic-ui-css": "^2.3.0",
+    "semantic-ui-react": "^0.78.3",
     "styled-system": "^2.2.1"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop -H 0.0.0.0",
-    "format":
-      "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

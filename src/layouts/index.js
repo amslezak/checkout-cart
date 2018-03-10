@@ -4,7 +4,8 @@ import Helmet from "react-helmet"
 
 // STYLES
 import theme from "../layouts/Theme"
-import "basscss/css/basscss.css"
+import "bootstrap/dist/css/bootstrap.css"
+import "../layouts/index.scss"
 import { Flex, Box, Container } from "rebass"
 import { ThemeProvider } from "emotion-theming"
 import XRay from "react-x-ray"
@@ -22,28 +23,24 @@ export default class TemplateWrapper extends Component {
 
   render() {
     return (
-      <div>
-        <ThemeProvider theme={theme}>
-          <XRay>
-            <Flex>
-              <Container w={1}>
-                <Helmet
-                  title="Williams Sonoma Checkout"
-                  meta={[
-                    { name: "description", content: "Checkout" },
-                    { name: "keywords", content: "sample, something" },
-                  ]}
-                />
-                <Header logo={this.logo} />
-                <Menu />
-                <Breadcrumb />
-                {this.props.children()}
-                <Footer className="regular" />
-              </Container>
-            </Flex>
-          </XRay>
-        </ThemeProvider>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Flex>
+          <Container w={1}>
+            <Helmet
+              title="Williams Sonoma Checkout"
+              meta={[
+                { name: "description", content: "Checkout" },
+                { name: "keywords", content: "sample, something" },
+              ]}
+            />
+            <Header logo={this.logo} />
+            <Menu />
+            <Breadcrumb />
+            {this.props.children()}
+            <Footer className="regular" />
+          </Container>
+        </Flex>
+      </ThemeProvider>
     )
   }
 }

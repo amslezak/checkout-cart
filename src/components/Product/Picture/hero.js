@@ -1,5 +1,18 @@
-import React from "react"
+import React, { Component } from "react"
+import Img from "gatsby-image"
+import { Flex, Box } from "rebass"
 
-const Hero = () => <div>Hero Image</div>
+class componentName extends Component {
+  render() {
+    return (
+      <div>
+        {console.log(this.props.hero)}
+        <Img sizes={this.props.hero} />
+      </div>
+    )
+  }
+}
 
-export default Hero
+export default componentName
+
+// <Img sizes= />

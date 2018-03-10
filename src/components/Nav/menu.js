@@ -1,20 +1,83 @@
 import React from "react"
-import { Toolbar, NavLink } from "rebass"
+import { Flex, Box } from "rebass"
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap"
 
-const Menu = () => <div>NavBar</div>
+export default class Example extends React.Component {
+  constructor(props) {
+    super(props)
 
-export default Menu
+    this.toggle = this.toggle.bind(this)
+    this.state = {
+      isOpen: false,
+    }
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    })
+  }
+  render() {
+    return (
+      <Flex>
+        <Box w={1}>
+          <Navbar color="dark" dark expand="lg">
+            <NavbarBrand href="/" className="mr-auto" />
 
-// <Toolbar>
-// <NavLink>Cookware</NavLink>
-// <NavLink>Cook's Tools</NavLink>
-// <NavLink>Cutlery</NavLink>
-// <NavLink>Electrics</NavLink>
-// <NavLink>Bakeware</NavLink>
-// <NavLink>Food</NavLink>
-// <NavLink>TableTop & Bar</NavLink>
-// <NavLink>Homekeeping</NavLink>
-// <NavLink>Outdoor</NavLink>
-// <NavLink>Sale</NavLink>
-// <NavLink>Williams-Sonoma Home</NavLink>
-// </Toolbar>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav navbar>
+                <NavItem>
+                  <NavLink href="#">Cookware</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Cook's Tools</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Cutlery</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Electrics</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Bakeware</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Food</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">TableTop & Bar</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Homekeeping</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Outdoor</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Sale</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className="text-truncate" href="#">
+                    Williams-Sonoma Home
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </Box>
+      </Flex>
+    )
+  }
+}

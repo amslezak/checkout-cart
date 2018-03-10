@@ -8,26 +8,35 @@ import { Flex, Box } from "rebass"
 export default class TemplateWrapper extends Component {
   constructor(props) {
     super(props)
+
     this.aprons = this.props.data.allImageSharp.edges["0"].node.sizes
+    this.smallAprons = this.props.data.smallAprons.edges
+    console.log(this.smallAprons)
   }
 
   render() {
-    {
-      console.log(this.aprons)
-    }
     return (
-      <div>
-        <Flex>
-          <Box w={1 / 2}>
-            <Img sizes={this.aprons} />
-            <Thumbnails />
-          </Box>
-          <Box w={1 / 2}>
-            <Description />
+      <Flex>
+        <Box px={1} w={[1, 1 / 2]}>
+          <Hero hero={this.aprons} />
+          <Thumbnails aprons={this.smallAprons} />
+        </Box>
+        <Box px={3} w={[1, 1 / 2]}>
+          <Description />
+          <Box
+            my={4}
+            py={1}
+            style={{
+              borderTop: "1px solid black",
+              borderBottom: "1px solid black",
+            }}
+          >
+            <Accordion isOpen />
+            <Accordion />
             <Accordion />
           </Box>
-        </Flex>
-      </div>
+        </Box>
+      </Flex>
     )
   }
 }
@@ -37,7 +46,16 @@ export const query = graphql`
     allImageSharp(filter: { id: { regex: "/product/" } }) {
       edges {
         node {
-          sizes(maxWidth: 480, quality: 80) {
+          sizes(maxWidth: 480, quality: 100) {
+            ...GatsbyImageSharpSizes_withWebp_noBase64
+          }
+        }
+      }
+    }
+    smallAprons: allImageSharp(filter: { id: { regex: "/product-small/" } }) {
+      edges {
+        node {
+          sizes(maxWidth: 480, quality: 100) {
             ...GatsbyImageSharpSizes_withWebp_noBase64
           }
         }
