@@ -1,4 +1,9 @@
-import Hero from "./hero"
-import Thumbnails from "./thumbnails"
+import React from "react"
 
-export default { Hero, Thumbnails }
+class PictureFrame extends React.Component {
+  render() {
+    return <div>{this.props.children}</div>
+  }
+}
+
+export default PictureFrame

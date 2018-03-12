@@ -3,7 +3,7 @@ import { Flex, Box, Small } from "rebass"
 
 const Breadcrumb = () => (
   <Flex>
-    <Box my={1}>
+    <Box mt={1}>
       <Small>
         <ul className="breadcrumb">
           <li className="breadcrumb-item">

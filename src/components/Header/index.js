@@ -5,7 +5,7 @@ import styled from "react-emotion"
 
 const Header = props => (
   <Flex>
-    <Box w={1} my={3}>
+    <Box w={1} my={2}>
       <Img style={{ width: "120px", margin: "auto" }} sizes={props.logo} />
     </Box>
   </Flex>
