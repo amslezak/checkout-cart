@@ -25,14 +25,14 @@ export default class TemplateWrapper extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Flex>
+          <Helmet
+            title="Williams Sonoma Checkout"
+            meta={[
+              { name: "description", content: "Checkout" },
+              { name: "keywords", content: "sample, something" },
+            ]}
+          />
           <Container w={1}>
-            <Helmet
-              title="Williams Sonoma Checkout"
-              meta={[
-                { name: "description", content: "Checkout" },
-                { name: "keywords", content: "sample, something" },
-              ]}
-            />
             <Header logo={this.logo} />
             <Menu />
             <Breadcrumb />
@@ -50,7 +50,7 @@ export const query = graphql`
     allImageSharp(filter: { id: { regex: "/logo/" } }) {
       edges {
         node {
-          sizes(maxWidth: 480, quality: 80) {
+          sizes(maxWidth: 480, quality: 100) {
             ...GatsbyImageSharpSizes_withWebp_noBase64
           }
         }

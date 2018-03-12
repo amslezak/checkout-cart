@@ -6,7 +6,7 @@ class Description extends React.Component {
     super(props)
 
     this.state = {
-      qty: parseInt(1),
+      qty: 1,
     }
 
     this.setState = this.setState.bind(this)
@@ -16,7 +16,6 @@ class Description extends React.Component {
     this.setState({
       qty: parseInt(num),
     })
-    console.log(this.state)
   }
 
   render() {
@@ -59,6 +58,7 @@ class Description extends React.Component {
               onClick={() => {
                 this.props.addToCard(this.props.id, this.state.qty)
                 this.props.updateCart()
+                this.props.calculateTotalPrice()
               }}
             >
               Add to Cart ({this.props.cartTotal})

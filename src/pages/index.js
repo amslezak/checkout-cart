@@ -2,12 +2,12 @@ import React, { Component } from "react"
 import Img from "gatsby-image"
 import Product from "../components/Product"
 import { Description, Accordion } from "../components/Product/Details"
-import Picture from "../components/Product/Picture"
 
 import Hero from "../components/Product/Picture/hero"
 import Thumbnails from "../components/Product/Picture/thumbnails"
 
 import { Flex, Box } from "rebass"
+import XRay from "react-x-ray"
 
 export default class App extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ export default class App extends Component {
     this.setImage = this.setImage.bind(this)
     this.addToCart = this.addToCart.bind(this)
     this.updateCartTotal = this.updateCartTotal.bind(this)
+    this.calculateTotalPrice = this.calculateTotalPrice.bind(this)
 
     this.images = this.props.data.allImageSharp.edges
     this.aprons = {
@@ -38,22 +39,24 @@ export default class App extends Component {
     }
 
     this.state = {
-      aprons: this.aprons,
+      product: this.aprons,
       images: this.images,
-      currentId: 0,
-      cart: [],
+      cart: {},
       cartTotal: 0,
+      cartPrice: 0,
+      currentId: 0,
     }
   }
 
   setImage(id) {
-    this.setState({
-      currentId: id,
+    this.setState(prevState => {
+      return {
+        currentId: id,
+      }
     })
   }
 
   addToCart(id, qty) {
-    console.log(qty)
     this.setState(prevState => {
       if (prevState.cart[id]) {
         return (prevState.cart[id] = prevState.cart[id] + qty)
@@ -63,14 +66,20 @@ export default class App extends Component {
     })
   }
 
-  updateCartTotal() {
+  updateCartTotal(qty) {
     this.setState(prevState => {
-      console.log(prevState)
+      let total = Object.values(this.state.cart).reduce((a, b) => {
+        return a + b
+      }, 0)
       return {
-        cartTotal: prevState.cart.reduce((a, b) => {
-          a + b
-        }),
+        cartTotal: total,
       }
+    })
+  }
+
+  calculateTotalPrice() {
+    this.setState(prevState => {
+      console.log("1", prevState.cartPrice)
     })
   }
 
@@ -87,12 +96,13 @@ export default class App extends Component {
         </Box>
         <Box px={3} w={[1, 1 / 2]}>
           <Description
-            styleName={this.state.aprons[this.state.currentId].style}
-            price={this.state.aprons[this.state.currentId].price}
+            styleName={this.state.product[this.state.currentId].style}
+            price={this.state.product[this.state.currentId].price}
             id={this.state.currentId}
             cartTotal={this.state.cartTotal}
             addToCard={this.addToCart}
             updateCart={this.updateCartTotal}
+            calculateTotalPrice={this.calculateTotalPrice}
           />
           <Box
             my={4}
