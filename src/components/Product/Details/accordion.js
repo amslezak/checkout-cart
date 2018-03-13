@@ -12,24 +12,24 @@ class Accordion extends Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       collapse: this.props.isOpen || false,
-      status: this.props.isOpen ? "▼ Expanded" : "▶ Collapsed",
+      status: this.props.isOpen ? "🔽 Expanded" : "▶️ Collapsed",
     }
   }
 
   onEntering() {
-    this.setState({ status: "▼ Expanded" })
+    this.setState({ status: "🔽 Expanded" })
   }
 
   onEntered() {
-    this.setState({ status: "▼ Expanded" })
+    this.setState({ status: "🔽 Expanded" })
   }
 
   onExiting() {
-    this.setState({ status: "▶ Collapsed" })
+    this.setState({ status: "▶️ Collapsed" })
   }
 
   onExited() {
-    this.setState({ status: "▶ Collapsed" })
+    this.setState({ status: "▶️ Collapsed" })
   }
 
   toggle() {

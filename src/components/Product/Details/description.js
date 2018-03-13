@@ -1,5 +1,7 @@
 import React from "react"
-import { Flex, Box, Input, Button } from "rebass"
+import { Flex, Box } from "rebass"
+import Cart from "./cart"
+
 import NumericInput from "react-numeric-input"
 
 export default class Description extends React.Component {
@@ -39,12 +41,11 @@ export default class Description extends React.Component {
             <li>Machine-wash</li>
           </ul>
 
-          <Box mt={4}>
-            <h4>${this.props.price}</h4>
+          <Box my={[3, 4]}>
+            <h4>${(this.props.price * this.state.qty).toFixed(2)}</h4>
           </Box>
-          <Box my={4} w={[3 / 4, 1 / 3, 1 / 4, 1 / 4]}>
+          <Box my={[3, 4]} w={[3 / 4, 1 / 3, 1 / 4, 1 / 4]}>
             <NumericInput
-              mobile
               value={this.state.qty}
               className="form-control"
               min={1}
@@ -55,7 +56,7 @@ export default class Description extends React.Component {
             />
           </Box>
 
-          <Box>
+          <Box my={[4]}>
             <button
               className="btn btn-danger"
               type="button"
@@ -64,10 +65,20 @@ export default class Description extends React.Component {
                 this.props.updateCart()
                 this.props.buildCart()
                 this.props.calculateTotalPrice()
+                this.setState({ qty: 1 })
               }}
             >
               Add to Cart ({this.props.cartTotal})
             </button>
+          </Box>
+          <Box my={[3, 4]}>
+            <Cart
+              cart={this.props.cartFull}
+              delete={this.props.delete}
+              updateCart={this.props.updateCart}
+              buildCart={this.props.buildCart}
+              calculateTotalPrice={this.props.calculateTotalPrice}
+            />
           </Box>
           <Box mt={4}>
             <h4>Total ${this.props.total.toFixed(2)}</h4>
@@ -77,13 +88,3 @@ export default class Description extends React.Component {
     )
   }
 }
-
-// <Box mb={4}>
-//             <input
-//               className="form-control"
-//               style={{ width: "50px" }}
-//               value={this.state.qty}
-//               onChange={e => {
-//                 this.updateQty(e.target.value)
-//               }}
-//             />

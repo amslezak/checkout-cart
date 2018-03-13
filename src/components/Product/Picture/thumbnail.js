@@ -10,9 +10,9 @@ class componentName extends Component {
   render() {
     return (
       <Box
-        w={1 / 4}
-        my={3}
-        p={2}
+        w={[1, 1 / 2]}
+        my={[2, 3]}
+        p={[1 / 2, 2]}
         onClick={() => {
           this.props.setImage(this.props.index)
         }}

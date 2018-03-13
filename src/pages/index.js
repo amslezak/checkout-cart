@@ -18,6 +18,7 @@ export default class App extends Component {
     this.updateCartTotal = this.updateCartTotal.bind(this)
     this.buildCart = this.buildCart.bind(this)
     this.calculateTotalPrice = this.calculateTotalPrice.bind(this)
+    this.deleteFromCart = this.deleteFromCart.bind(this)
 
     this.images = this.props.data.allImageSharp.edges
     this.aprons = {
@@ -26,7 +27,7 @@ export default class App extends Component {
         price: "19.95",
       },
       1: {
-        style: "Striped Orange Blossom",
+        style: "Striped Blossom",
         price: "24.95",
       },
       2: {
@@ -55,6 +56,13 @@ export default class App extends Component {
       return {
         currentId: id,
       }
+    })
+  }
+
+  deleteFromCart(id) {
+    this.setState(prevState => {
+      console.log(prevState.cart[id])
+      return (prevState.cart[id] = 0)
     })
   }
 
@@ -116,7 +124,7 @@ export default class App extends Component {
   render() {
     return (
       <Flex>
-        <Box px={1} w={[1, 1 / 2]}>
+        <Box px={1} w={[1 / 2]}>
           <Hero pics={this.state.images} id={this.state.currentId} />
           <Thumbnails
             pics={this.state.images}
@@ -134,7 +142,9 @@ export default class App extends Component {
             updateCart={this.updateCartTotal}
             buildCart={this.buildCart}
             calculateTotalPrice={this.calculateTotalPrice}
+            cartFull={this.state.cartFull}
             total={this.state.cartTotalPrice}
+            delete={this.deleteFromCart}
           />
           <Box
             my={4}

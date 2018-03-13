@@ -19,7 +19,7 @@ const Breadcrumb = () => (
             <a href="#">Adult Aprons</a>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Williams Sonoma Classic Apron - French Blue
+            Williams Sonoma Classic Apron
           </li>
         </ul>
       </Small>
