@@ -1,3 +1,5 @@
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
 body {
   font-size: 0.75rem;
 }
@@ -14,6 +16,10 @@ li.nav-item {
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.01rem;
+}
+
+input.form-control {
+  font-size: 1.25rem !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {

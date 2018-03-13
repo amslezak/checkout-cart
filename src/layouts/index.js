@@ -4,7 +4,6 @@ import Helmet from "react-helmet"
 
 // STYLES
 import theme from "../layouts/Theme"
-import "bootstrap/dist/css/bootstrap.css"
 import "../layouts/index.scss"
 import { Flex, Box, Container } from "rebass"
 import { ThemeProvider } from "emotion-theming"

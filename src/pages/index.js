@@ -16,6 +16,7 @@ export default class App extends Component {
     this.setImage = this.setImage.bind(this)
     this.addToCart = this.addToCart.bind(this)
     this.updateCartTotal = this.updateCartTotal.bind(this)
+    this.buildCart = this.buildCart.bind(this)
     this.calculateTotalPrice = this.calculateTotalPrice.bind(this)
 
     this.images = this.props.data.allImageSharp.edges
@@ -42,8 +43,9 @@ export default class App extends Component {
       product: this.aprons,
       images: this.images,
       cart: {},
+      cartFull: {},
       cartTotal: 0,
-      cartPrice: 0,
+      cartTotalPrice: 0,
       currentId: 0,
     }
   }
@@ -77,9 +79,37 @@ export default class App extends Component {
     })
   }
 
+  buildCart() {
+    this.setState(() => {
+      let cartFull = this.state.cartFull
+      let cart = this.state.cart
+      let product = this.state.product
+
+      for (let item in cart) {
+        cartFull[item] = {
+          qty: cart[item],
+          style: product[item].style,
+          price: product[item].price,
+          total: cart[item] * product[item].price,
+        }
+      }
+
+      return { cartFull: cartFull }
+    })
+  }
+
   calculateTotalPrice() {
     this.setState(prevState => {
-      console.log("1", prevState.cartPrice)
+      let cartFull = prevState.cartFull
+      let cartTotal = 0
+
+      for (let item in cartFull) {
+        cartTotal += cartFull[item].total
+      }
+
+      return {
+        cartTotalPrice: cartTotal,
+      }
     })
   }
 
@@ -102,7 +132,9 @@ export default class App extends Component {
             cartTotal={this.state.cartTotal}
             addToCard={this.addToCart}
             updateCart={this.updateCartTotal}
+            buildCart={this.buildCart}
             calculateTotalPrice={this.calculateTotalPrice}
+            total={this.state.cartTotalPrice}
           />
           <Box
             my={4}
@@ -117,7 +149,6 @@ export default class App extends Component {
             <Accordion />
           </Box>
         </Box>
-        {console.log(this.state)}
       </Flex>
     )
   }

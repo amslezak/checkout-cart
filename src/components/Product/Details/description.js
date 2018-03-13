@@ -1,15 +1,16 @@
 import React from "react"
 import { Flex, Box, Input, Button } from "rebass"
+import NumericInput from "react-numeric-input"
 
-class Description extends React.Component {
+export default class Description extends React.Component {
   constructor(props) {
     super(props)
+
+    this.updateQty = this.updateQty.bind(this)
 
     this.state = {
       qty: 1,
     }
-
-    this.setState = this.setState.bind(this)
   }
 
   updateQty(num) {
@@ -41,16 +42,19 @@ class Description extends React.Component {
           <Box mt={4}>
             <h4>${this.props.price}</h4>
           </Box>
-          <Box mb={4}>
-            <input
-              className="form-control"
-              style={{ width: "50px" }}
+          <Box my={4} w={[3 / 4, 1 / 3, 1 / 4, 1 / 4]}>
+            <NumericInput
+              mobile
               value={this.state.qty}
+              className="form-control"
+              min={1}
+              precision={0}
               onChange={e => {
-                this.updateQty(e.target.value)
+                this.updateQty(e)
               }}
             />
           </Box>
+
           <Box>
             <button
               className="btn btn-danger"
@@ -58,11 +62,15 @@ class Description extends React.Component {
               onClick={() => {
                 this.props.addToCard(this.props.id, this.state.qty)
                 this.props.updateCart()
+                this.props.buildCart()
                 this.props.calculateTotalPrice()
               }}
             >
               Add to Cart ({this.props.cartTotal})
             </button>
+          </Box>
+          <Box mt={4}>
+            <h4>Total ${this.props.total.toFixed(2)}</h4>
           </Box>
         </Box>
       </Flex>
@@ -70,4 +78,12 @@ class Description extends React.Component {
   }
 }
 
-export default Description
+// <Box mb={4}>
+//             <input
+//               className="form-control"
+//               style={{ width: "50px" }}
+//               value={this.state.qty}
+//               onChange={e => {
+//                 this.updateQty(e.target.value)
+//               }}
+//             />

@@ -26,6 +26,7 @@
     "object-fit-images": "^3.2.3",
     "react-emotion": "^9.0.2",
     "react-helmet": "^5.2.0",
+    "react-numeric-input": "^2.2.3",
     "react-popper": "^0.8.2",
     "react-transition-group": "^2.2.1",
     "react-x-ray": "^1.0.0-4",
