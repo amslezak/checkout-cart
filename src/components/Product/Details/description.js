@@ -42,11 +42,15 @@ export default class Description extends React.Component {
           </ul>
 
           <Box my={[3, 4]}>
-            <h4>${(this.props.price * this.state.qty).toFixed(2)}</h4>
+            <h4>
+              ${(
+                this.props.price * this.state.qty || this.props.price * 1
+              ).toFixed(2)}
+            </h4>
           </Box>
           <Box my={[3, 4]} w={[3 / 4, 1 / 3, 1 / 4, 1 / 4]}>
             <NumericInput
-              value={this.state.qty}
+              value={this.state.qty || 0}
               className="form-control"
               min={1}
               precision={0}
