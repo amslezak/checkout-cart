@@ -1,7 +1,10 @@
 ### West Elm Assignment
 
-Responsive Check out built with: 
-- React
+### Responsive Checkout cart built with: 
+
+**DEMO** - https://cart.aslezak.com
+
+- React (w/ state)
 - Gatsby
 - Rebass
 - Sass
