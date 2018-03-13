@@ -50,7 +50,8 @@ export default class Description extends React.Component {
           </Box>
           <Box my={[3, 4]} w={[3 / 4, 1 / 3, 1 / 4, 1 / 4]}>
             <NumericInput
-              value={this.state.qty || 0}
+              mobile
+              value={this.state.qty}
               className="form-control"
               min={1}
               precision={0}
@@ -65,7 +66,7 @@ export default class Description extends React.Component {
               className="btn btn-danger"
               type="button"
               onClick={() => {
-                this.props.addToCard(this.props.id, this.state.qty)
+                this.props.addToCard(this.props.id, this.state.qty || 1)
                 this.props.updateCart()
                 this.props.buildCart()
                 this.props.calculateTotalPrice()
