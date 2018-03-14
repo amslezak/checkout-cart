@@ -2,11 +2,7 @@ import React, { Component } from "react"
 import { Flex, Box } from "rebass"
 import Img from "gatsby-image"
 
-class componentName extends Component {
-  constructor(props) {
-    super(props)
-  }
-
+export default class Thumbnail extends Component {
   render() {
     return (
       <Box
@@ -22,5 +18,3 @@ class componentName extends Component {
     )
   }
 }
-
-export default componentName

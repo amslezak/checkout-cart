@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Thumbnail from "../Picture/thumbnail"
 import { Flex, Box } from "rebass"
 
-class componentName extends Component {
+export default class Thumbnails extends Component {
   render() {
     return (
       <Flex>
@@ -20,5 +20,3 @@ class componentName extends Component {
     )
   }
 }
-
-export default componentName
