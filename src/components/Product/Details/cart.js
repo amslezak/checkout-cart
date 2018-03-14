@@ -33,7 +33,7 @@ class componentName extends Component {
       <Box
         w={1}
         p={3}
-        style={{ border: "1px solid #9F9FA0", borderRadius: "5px" }}
+        style={{ border: "1px solid #CED4DA", borderRadius: "5px" }}
       >
         <Box mt={1} mb={2}>
           <b>🛒 CART </b>
